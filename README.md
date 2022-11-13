@@ -1,6 +1,8 @@
 # Booba Bot 
 ![bugbooba](https://user-images.githubusercontent.com/85846415/201528265-988595c2-b2a2-4626-a550-c4fc82ce0a4d.jpeg)
 
+Invite link: https://discord.com/api/oauth2/authorize?client_id=1036251761272426546&permissions=8&scope=bot%20applications.commands
+
 # What does it do????
 
 It pulls a recent score from Scoresaber with IDs!
