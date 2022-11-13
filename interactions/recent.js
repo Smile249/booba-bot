@@ -36,9 +36,15 @@ module.exports = {
         const diffraw = score.leaderboard.difficulty.difficultyRaw;
         let diffArr = diffraw.split("_");
         diffArr.shift(); //removing first element in array because the diff string has _ in the beginning
+        let diff = ""  
         if(diffArr[0] == "ExpertPlus") diffArr[0] = "Expert+";
+        if(diffArr[1] == "SoloStandard"){
+        diff = diffArr[0];
+        }else{
+        diff = `${diffArr[0]} (${diffArr[1]})`;
+        }
 
-        const diff = `${diffArr[0]} (${diffArr[1]})`;
+
 
         //Create Embed Format
         let scoreEmbed = new EmbedBuilder()
