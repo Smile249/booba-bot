@@ -10,5 +10,4 @@ It pulls a recent score from Scoresaber with IDs!
 It makes people connect and hug each other!
 
 ![hug](https://user-images.githubusercontent.com/85846415/201528207-d0f12c75-02c7-4f9f-ac57-4c1d3603f2da.png)
-
 *so wholesome*
