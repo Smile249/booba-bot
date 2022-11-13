@@ -38,7 +38,7 @@ module.exports = {
         diffArr.shift(); //removing first element in array because the diff string has _ in the beginning
         if(diffArr[0] == "ExpertPlus") diffArr[0] = "Expert+";
 
-        const diff = `${arr[0]} (${arr[1]})`;
+        const diff = `${diffArr[0]} (${diffArr[1]})`;
 
         //Create Embed Format
         let scoreEmbed = new EmbedBuilder()
