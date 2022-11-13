@@ -36,9 +36,13 @@ module.exports = {
         const diffraw = score.leaderboard.difficulty.difficultyRaw;
         let diffArr = diffraw.split("_");
         diffArr.shift(); //removing first element in array because the diff string has _ in the beginning
-        if(diffArr[0] == "ExpertPlus") diffArr[0] = "Expert+";
-
-        const diff = `${diffArr[0]} (${diffArr[1]})`;
+        
+        if (diffArr[0] == "ExpertPlus") diffArr[0] = "Expert+";
+        if (diffArr[1] == "SoloStandard") {
+          diff = diffArr[0];
+        } else {
+          diff = `${diffArr[0]} (${diffArr[1]})`;
+        }
 
         //Create Embed Format
         let scoreEmbed = new EmbedBuilder()
@@ -47,7 +51,7 @@ module.exports = {
           .setDescription(
             score.leaderboard.songAuthorName +
               "\n" +
-              score.leaderboard.levelAuthorName
+              "**" + score.leaderboard.levelAuthorName + "**"
           )
           .setThumbnail(score.leaderboard.coverImage)
           .addFields({
@@ -65,7 +69,11 @@ module.exports = {
           .addFields({
             name: "Difficulty",
             value: diff,
-          });
+          })
+          .addFields({
+            name: "Rank",
+            value: JSON.stringify(score.score.rank)
+          })
 
         return interaction.reply({ embeds: [scoreEmbed] });
       });
