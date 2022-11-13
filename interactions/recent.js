@@ -34,7 +34,7 @@ module.exports = {
         console.log(score);
         
         const diffraw = score.leaderboard.difficulty.difficultyRaw;
-        let diffArr = difficulty.split("_");
+        let diffArr = diffraw.split("_");
         diffArr.shift(); //removing first element in array because the diff string has _ in the beginning
         if(diffArr[0] == "ExpertPlus") diffArr[0] = "Expert+";
 
