@@ -1,7 +1,7 @@
 # Booba Bot
 A Discord bot by Smile.
 
-#What does it do????
+# What does it do????
 
 It pulls a recent score from Scoresaber with IDs!
 
