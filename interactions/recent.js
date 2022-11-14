@@ -31,7 +31,7 @@ module.exports = {
 
       .then((res) => res.json())
       .then((data) => {
-      if(data.playerScores.length < 1){
+      if(data.playerScores.length == 0){
       return interaction.reply({content:"Couldn't find player. Please enter a valid id",ephemeral:true}) // send a private message if player wasnt found
       }
         const score = data.playerScores[0];
