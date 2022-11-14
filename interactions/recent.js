@@ -23,11 +23,12 @@ module.exports = {
         .setRequired(true)
     ),
   execute(interaction, client) {
+    
     fetch(
       "https://scoresaber.com/api/player/" +
         interaction.options.getString("id") +
-        "/scores?limit=1&sort=recent&withMetadata=false"
-    )
+        "/scores?limit=1&sort=recent&withMetadata=false")
+
       .then((res) => res.json())
       .then((data) => {
         const score = data.playerScores[0];
