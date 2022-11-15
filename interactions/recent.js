@@ -22,21 +22,37 @@ module.exports = {
         .setMinLength(16)
         .setMaxLength(17)
         .setRequired(true)
-    ),
+    ) 
+    .addStringOption((option) =>
+    option
+      .setName("recentness")
+      .setDescription(
+        "Enter a number higher than 0 to request less recent songs. (leave blank to request most recent song)"
+      )
+      .setMaxLength(1)
+      .setRequired(false)
+  ),
   execute(interaction, client) {
     
     fetch(
       "https://scoresaber.com/api/player/" +
         interaction.options.getString("id") +
-        "/scores?limit=1&sort=recent&withMetadata=false")
+        "/scores?limit=10&sort=recent&withMetadata=false")
 
       .then((res) => res.json())
       .then((data) => {
       if(data.errorMessage || data.playerScores.length == 0){
       return interaction.reply({content:"Couldn't find player. Please enter a valid id",ephemeral:true}) // send a private message if player wasnt found
       }
-        const score = data.playerScores[0];
-//         console.log(score);
+
+      let rec;
+      if (interaction.options.getString("recentness") == null){
+        rec = 0
+      } else{
+        rec = interaction.options.getString("recentness")
+      }
+        const score = data.playerScores[rec] //interaction.options.getString("recentness")
+        //console.log(score);
         
         const diffraw = score.leaderboard.difficulty.difficultyRaw;
         let diffArr = diffraw.split("_");
@@ -56,9 +72,9 @@ module.exports = {
           .setTitle(score.leaderboard.songName)
           .setURL("https://scoresaber.com/leaderboard/" + score.leaderboard.id)
           .setDescription(
-            score.leaderboard.songAuthorName +
-              "\n" +
-              "**" + score.leaderboard.levelAuthorName + "**"
+            "*" + score.leaderboard.songAuthorName + "*" + //make italic
+              "\n" + //create new line
+              "**" + score.leaderboard.levelAuthorName + "**" //make bold
           )
           .setThumbnail(score.leaderboard.coverImage)
           .addFields({
