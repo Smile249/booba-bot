@@ -15,7 +15,7 @@ module.exports = {
     .setDescription("Retreive the most recent score set by a player.")
     .addStringOption((option) =>
       option
-        .setName("id")
+        .setName("Id")
         .setDescription(
           "The scoresaber ID of the person you want to get the score from."
         )
@@ -25,7 +25,7 @@ module.exports = {
     ) 
     .addStringOption((option) =>
     option
-      .setName("recentness")
+      .setName("Age")
       .setDescription(
         "Enter a number higher than 0 to request less recent songs. (leave blank to request most recent song)"
       )
