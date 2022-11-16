@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
+const { SlashCommandBuilder, Client, Events } = require("@discordjs/builders");
 const fetch = require("node-fetch");
 const {
   EmbedBuilder,
@@ -6,7 +6,7 @@ const {
   ButtonBuilder,
   ButtonStyle,
   ActivityType,
-} = require("discord.js");
+} = require("discord.js");  
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -15,7 +15,7 @@ module.exports = {
     .setDescription("Retreive the most recent score set by a player.")
     .addStringOption((option) =>
       option
-        .setName("Id")
+        .setName("id")
         .setDescription(
           "The scoresaber ID of the person you want to get the score from."
         )
@@ -23,36 +23,38 @@ module.exports = {
         .setMaxLength(17)
         .setRequired(true)
     ) 
-    .addStringOption((option) =>
+    .addIntegerOption((option) =>
     option
-      .setName("Age")
+      .setName("age")
       .setDescription(
         "Enter a number higher than 0 to request less recent songs. (leave blank to request most recent song)"
       )
-      .setMaxLength(1)
       .setRequired(false)
   ),
   execute(interaction, client) {
-    
+
+    //check if "age" contains anything or if it contains any numbers
+    let rec;
+    if (interaction.options.getInteger("age") == null){
+      rec = 0
+    } else{
+      rec = interaction.options.getInteger("age")
+    }
+     
+      
     fetch(
       "https://scoresaber.com/api/player/" +
         interaction.options.getString("id") +
-        "/scores?limit=10&sort=recent&withMetadata=false")
+        "/scores?limit=" + rec + 1 + "&sort=recent&page=0&withMetadata=false")
 
       .then((res) => res.json())
       .then((data) => {
       if(data.errorMessage || data.playerScores.length == 0){
-      return interaction.reply({content:"Couldn't find player. Please enter a valid id",ephemeral:true}) // send a private message if player wasnt found
+      return interaction.reply({content:"Error while processing your command! Please check if you put everything in correctly!",ephemeral:true}) // send a private message if player wasnt found
       }
-
-      let rec;
-      if (interaction.options.getString("recentness") == null){
-        rec = 0
-      } else{
-        rec = interaction.options.getString("recentness")
-      }
-        const score = data.playerScores[rec] //interaction.options.getString("recentness")
-        //console.log(score);
+      
+      
+        const score = data.playerScores[rec]
         
         const diffraw = score.leaderboard.difficulty.difficultyRaw;
         let diffArr = diffraw.split("_");
@@ -98,6 +100,7 @@ module.exports = {
             value: JSON.stringify(score.score.rank)
           })
 
+        
         return interaction.reply({ embeds: [scoreEmbed] });
       });
   },

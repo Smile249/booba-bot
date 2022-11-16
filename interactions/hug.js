@@ -12,7 +12,7 @@ const {
 module.exports = {
   data: new SlashCommandBuilder()
       .setName('hug')
-      .setDescription('Hug Someone')
+      .setDescription('Hug Someone (use this command if you believe the bot broke :p)')
       .addUserOption(option =>
           option
               .setName('user')
