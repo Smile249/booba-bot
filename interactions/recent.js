@@ -53,7 +53,6 @@ module.exports = {
       return interaction.reply({content:"Error while processing your command! Please check if you put everything in correctly!",ephemeral:true}) // send a private message if player wasnt found
       }
       
-      
         const score = data.playerScores[rec]
         
         const diffraw = score.leaderboard.difficulty.difficultyRaw;
