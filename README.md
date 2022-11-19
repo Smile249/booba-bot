@@ -13,6 +13,17 @@ It makes people connect and hug each other! ***so wholesome***
 
 ![hug](https://user-images.githubusercontent.com/85846415/201528207-d0f12c75-02c7-4f9f-ac57-4c1d3603f2da.png)
 
+😐😐
+
+![image](https://user-images.githubusercontent.com/85846415/202873050-fe1ff7a4-2819-48d2-9e3b-a8ff2fb1260f.png)
+
+😃👍
+
+![Screenshot_2](https://user-images.githubusercontent.com/85846415/202873108-d274bd9d-92e0-44cf-8bf2-20c14f3fe3c3.png)
+
+😱😱😱
+
+![Screenshot_4](https://user-images.githubusercontent.com/85846415/202873142-d86cd027-e600-4b93-9c49-b62b29848c67.png)
 
 
 AAAAAND MORE COMING SOON!
