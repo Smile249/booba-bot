@@ -23,8 +23,7 @@ module.exports = {
             .setImage(data.url)
             .setColor("#acace6")
             .setFooter({
-              text: "This is [CANA]Dan's fault",
-              iconURL: "https://lh3.googleusercontent.com/u/0/drive-viewer/AFDK6gP9uQM4asnAw0S_2otNemme2_HQWnB0BWNJclyPGIcsKM_Fkhq8jNWmKUDead2lNprftw3dtG_lIaoyE6Hix9a5UBi48g=w1920-h927"
+              text: "This is [CANA]Dan's fault"
             })
             return interaction.editReply({ embeds: [nyaEmbed] });
           });
