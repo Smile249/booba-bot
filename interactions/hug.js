@@ -7,12 +7,13 @@ const {
   ActivityType,
   GuildScheduledEventPrivacyLevel,
   ClientUser,
+  Client,
 } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
       .setName('hug')
-      .setDescription('Hug Someone (use this command if you believe the bot broke :p)')
+      .setDescription('Hug Someone!')
       .addUserOption(option =>
           option
               .setName('user')
@@ -20,6 +21,14 @@ module.exports = {
               .setRequired(true)
       ),
   async execute(interaction) {
-      return interaction.reply(`${interaction.user} hugs ${interaction.options.getUser('user')}`)
+    fetch("https://some-random-api.ml/animu/hug")
+      .then((res) => res.json())
+      .then((data) => {
+        let hugEmbed = new EmbedBuilder()
+        .setImage(data.link)
+        .setDescription(`${interaction.user} hugs ${interaction.options.getUser('user')}`)
+      //.setTitle(interaction.user + ' hugs ' + interaction.options.getUser('user'))
+      return interaction.reply({embeds: [hugEmbed]})
+    });
   },
 };
