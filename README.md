@@ -18,6 +18,10 @@ It makes people connect and hug each other! ***so wholesome***
 
 ![hug](https://user-images.githubusercontent.com/85846415/201528207-d0f12c75-02c7-4f9f-ac57-4c1d3603f2da.png)
 
+This cool command that shows you the progress of the year!!
+
+![Screenshot_1](https://user-images.githubusercontent.com/85846415/203413595-d52b6805-9801-4eab-aa86-afed5092fa45.png)
+
 uhhhh 😐😐
 
 ![image](https://user-images.githubusercontent.com/85846415/202873050-fe1ff7a4-2819-48d2-9e3b-a8ff2fb1260f.png)
