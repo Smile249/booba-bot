@@ -19,20 +19,25 @@ module.exports = {
         .setDescription(
           "The scoresaber ID of the person you want to get the score from."
         )
-        .setMinLength(16)
-        .setMaxLength(17)
         .setRequired(true)
     )
     .addIntegerOption((option) =>
       option
         .setName("place")
         .setDescription(
-          "Enter a number higher than 0 to request lower scores. (leave blank to request highest)"
+          "Enter a number higher than 1 to request lower scores. (leave blank to request highest)"
         )
         .setRequired(false)
     ),
   async execute(interaction, client) {
     await interaction.deferReply();
+
+    let idOutput;
+    if (interaction.options.id == "smile" || "Smile" || "SMILE") {
+      idOutput = 2362658747090970
+    } else {
+      id = idOutput
+    }
 
     //check if "age" contains anything or if it contains any numbers
     let rec;
@@ -44,7 +49,7 @@ module.exports = {
 
     fetch(
       "https://scoresaber.com/api/player/" +
-        interaction.options.getString("id") +
+        idOutput +
         "/scores?limit=1&sort=top&page=" +
         rec +
         "&withMetadata=false"
@@ -97,7 +102,7 @@ module.exports = {
         let scoreEmbed = new EmbedBuilder()
           .setTitle(score.leaderboard.songName)
           .setColor(EmbColor)
-          .setURL("https://scoresaber.com/leaderboard/" + score.leaderboard.id)
+          .setURL("https://scoresaber.com/leaderboard/" + score.leaderboard.id + Math.floor(score.score.rank/12+1))
           .setDescription(
             "*" +
               score.leaderboard.songAuthorName +
