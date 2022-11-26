@@ -32,13 +32,6 @@ module.exports = {
   async execute(interaction, client) {
     await interaction.deferReply();
 
-    let idOutput;
-    if (interaction.options.id == "smile" || "Smile" || "SMILE") {
-      idOutput = 2362658747090970
-    } else {
-      id = idOutput
-    }
-
     //check if "age" contains anything or if it contains any numbers
     let rec;
     if (interaction.options.getInteger("place") == null) {
@@ -49,7 +42,7 @@ module.exports = {
 
     fetch(
       "https://scoresaber.com/api/player/" +
-        idOutput +
+        interaction.options.getString("id") +
         "/scores?limit=1&sort=top&page=" +
         rec +
         "&withMetadata=false"
