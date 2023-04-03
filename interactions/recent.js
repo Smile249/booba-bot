@@ -96,12 +96,19 @@ module.exports = {
             break;
         }
 
+        //check for whole numbers for page placement
+        if (score.score.rank % 1 === 0) {
+          ldb = Math.floor(score.score.rank / 12)
+        } else {
+          ldb = Math.floor(score.score.rank / 12 + 1)
+        }
+
         //Create Embed Format
         let scoreEmbed = new EmbedBuilder()
           .setAuthor({ name: data2.name, iconURL: data2.profilePicture, url: `https://scoresaber.com/u/${interaction.options.getString("id")}` })
           .setTitle(score.leaderboard.songName)
           .setColor(EmbColor)
-          .setURL("https://scoresaber.com/leaderboard/" + score.leaderboard.id + "?page=" + Math.floor(score.score.rank / 12 + 1))
+          .setURL("https://scoresaber.com/leaderboard/" + score.leaderboard.id + "?page=" + ldb)
           .setDescription(
             "*" +
             score.leaderboard.songAuthorName +
