@@ -7,16 +7,16 @@ Invite link: https://discord.com/api/oauth2/authorize?client_id=1036251761272426
 
 It pulls a recent score from Scoresaber with IDs!
 
-![recent](https://user-images.githubusercontent.com/85846415/201528169-031fb3c5-a969-4113-92ef-af604433a0db.png)
+![recent](https://user-images.githubusercontent.com/85846415/229568825-a64b2702-0158-4f3d-9bf9-9ea94bfc298a.png)
 
 It pulls your top scores from Scoresaber!
 
-![top cmd](https://user-images.githubusercontent.com/85846415/202910964-5cfba81e-c0ee-4c6f-80d1-76948f421afe.png)
-
+![top](https://user-images.githubusercontent.com/85846415/229568726-14527bd7-da95-4b9c-b3d1-6b758b3e1c96.png)
+![top_place](https://user-images.githubusercontent.com/85846415/229568754-caf24800-662a-41cb-bf86-1cd691f5a00e.png)
 
 It makes people connect and hug each other! ***so wholesome***
 
-![hug](https://user-images.githubusercontent.com/85846415/201528207-d0f12c75-02c7-4f9f-ac57-4c1d3603f2da.png)
+![hug](https://user-images.githubusercontent.com/85846415/229569078-ab7cc8f1-0b2d-41d4-a907-2d3b97d509a7.png)
 
 This cool command that shows you the progress of the year!!
 
@@ -35,4 +35,3 @@ uhhhh 😐😐
 ![Screenshot_4](https://user-images.githubusercontent.com/85846415/202873142-d86cd027-e600-4b93-9c49-b62b29848c67.png)
 
 
-AAAAAND MORE COMING SOON!
