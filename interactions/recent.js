@@ -42,11 +42,10 @@ module.exports = {
 
     fetch(
       "https://scoresaber.com/api/player/" +
-        interaction.options.getString("id") +
-        "/scores?limit=1&sort=recent&page=" +
-        rec +
-        "&withMetadata=false"
-    )
+      interaction.options.getString("id") +
+      "/scores?limit=1&sort=recent&page=" +
+      rec +
+      "&withMetadata=false")
       .then((res) => res.json())
       .then((data) => {
         if (data.errorMessage || data.playerScores.length == 0) {
@@ -57,6 +56,12 @@ module.exports = {
             ephemeral: true,
           }); // send a private message if player wasnt found
         }
+
+          res2 = fetch('https://scoresaber.com/api/player/' + interaction.options.getString("id") + '/basic')
+          .then((res2) => res2.json())
+          .then((data2) => {
+            
+          
 
         const score = data.playerScores[0];
 
@@ -93,17 +98,18 @@ module.exports = {
 
         //Create Embed Format
         let scoreEmbed = new EmbedBuilder()
+          .setAuthor({ name: data2.name, iconURL: data2.profilePicture, url: `https://scoresaber.com/u/${interaction.options.getString("id")}` })
           .setTitle(score.leaderboard.songName)
           .setColor(EmbColor)
-          .setURL("https://scoresaber.com/leaderboard/" + score.leaderboard.id + "?page=" + Math.floor(score.score.rank/12+1))
+          .setURL("https://scoresaber.com/leaderboard/" + score.leaderboard.id + "?page=" + Math.floor(score.score.rank / 12 + 1))
           .setDescription(
             "*" +
-              score.leaderboard.songAuthorName +
-              "*" + //make italic
-              "\n" + //create new line
-              "**" +
-              score.leaderboard.levelAuthorName +
-              "**" //make bold
+            score.leaderboard.songAuthorName +
+            "*" + //make italic
+            "\n" + //create new line
+            "**" +
+            score.leaderboard.levelAuthorName +
+            "**" //make bold
           )
           .setThumbnail(score.leaderboard.coverImage)
           .addFields(
@@ -115,8 +121,7 @@ module.exports = {
               name: "Accuracy",
               value:
                 (
-                  (score.score.baseScore / score.leaderboard.maxScore) *
-                  100
+                  (score.score.baseScore / score.leaderboard.maxScore) * 100
                 ).toFixed(2) + "%",
             },
             {
@@ -126,10 +131,22 @@ module.exports = {
             {
               name: "Rank",
               value: JSON.stringify(score.score.rank),
+            },
+            {
+              name: "Bad Cuts",
+              value: JSON.stringify(score.score.badCuts),
+              inline: true,
+            },
+            {
+              name: "Misses",
+              value: JSON.stringify(score.score.missedNotes),
+              inline: true,
             }
           );
 
+
         return interaction.editReply({ embeds: [scoreEmbed] });
+      })
       });
   },
 };

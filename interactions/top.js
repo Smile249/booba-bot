@@ -58,6 +58,11 @@ module.exports = {
           }); // send a private message if player wasnt found
         }
 
+        res2 = fetch('https://scoresaber.com/api/player/' + interaction.options.getString("id") + '/basic')
+          .then((res2) => res2.json())
+          .then((data2) => {
+            
+
         const score = data.playerScores[0];
 
         const diffraw = score.leaderboard.difficulty.difficultyRaw;
@@ -93,6 +98,7 @@ module.exports = {
 
         //Create Embed Format
         let scoreEmbed = new EmbedBuilder()
+          .setAuthor({ name: data2.name, iconURL: data2.profilePicture, url: `https://scoresaber.com/u/${interaction.options.getString("id")}` })
           .setTitle(score.leaderboard.songName)
           .setColor(EmbColor)
           .setURL("https://scoresaber.com/leaderboard/" + score.leaderboard.id + Math.floor(score.score.rank/12+1))
@@ -126,10 +132,21 @@ module.exports = {
             {
               name: "Rank",
               value: JSON.stringify(score.score.rank),
+            },
+            {
+              name: "Bad Cuts",
+              value: JSON.stringify(score.score.badCuts),
+              inline: true,
+            },
+            {
+              name: "Misses",
+              value: JSON.stringify(score.score.missedNotes),
+              inline: true,
             }
           );
 
         return interaction.editReply({ embeds: [scoreEmbed] });
+          });
       });
   },
 };
